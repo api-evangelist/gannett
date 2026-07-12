@@ -14,6 +14,10 @@ created: '2026-05-04'
 modified: '2026-05-04'
 specificationVersion: '0.19'
 common:
+  - type: VulnerabilityDisclosure
+    url: security/gannett-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/gannett-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/gannett
   - type: Website
