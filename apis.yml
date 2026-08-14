@@ -20,37 +20,102 @@ tags:
   - Publishing
   - Journalism
   - Digital Marketing
-description: Gannett Co., Inc. is a diversified media and digital marketing solutions company and the publisher of USA TODAY and a network of more than 200 local daily newspapers across the United States. Through its USA TODAY Network and LocaliQ digital marketing services, Gannett delivers news, information, and digital marketing technology to consumers and small-to-medium-sized businesses. Gannett does not currently publish a publicly accessible developer API portal with open documentation.
+  - Advertising
+  - Local Marketing
+  - Content
+description: >-
+  Gannett Co., Inc. is a diversified media and digital marketing solutions company and the
+  publisher of USA TODAY and a network of more than 200 local daily newspapers across the
+  United States. It now presents its corporate identity as USA TODAY Co. — www.gannett.com
+  301-redirects its corporate pages to www.usatodayco.com, and investors.gannett.com resolves
+  to investors.usatodayco.com. Through the USA TODAY Network and LocaliQ, its digital
+  marketing services arm for small and medium-sized businesses, Gannett delivers news,
+  audience and advertising technology. Gannett publishes no developer portal, no API
+  reference and no machine-readable API contract: developer.gannett.com and
+  developer.usatoday.com both redirect to consumer sites, and no OpenAPI, AsyncAPI, GraphQL,
+  MCP or A2A surface is served on any of its hosts. What it does publish machine-readably is
+  a publisher-side control surface — an RFC 9116 security.txt, a Global Privacy Control
+  signal, an llms.txt on localiq.com, and a 958-line robots.txt that denies the major AI
+  crawlers site-wide while re-allowing a commercial subset of shopping, money and
+  sponsor-content paths.
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 common:
   - type: VulnerabilityDisclosure
     url: security/gannett-vulnerability-disclosure.yml
+  - type: Security
+    url: https://www.usatodayco.com/responsible-disclosure-program/
   - type: DomainSecurity
     url: security/gannett-domain-security.yml
+  - type: WellKnown
+    url: well-known/gannett-well-known.yml
+  - type: SecurityTxt
+    url: well-known/gannett-security.txt
+  - type: LLMsTxt
+    url: llms/gannett-llms.txt
+  - type: Conformance
+    url: conformance/gannett-conformance.yml
+  - type: Plans
+    url: plans/gannett-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/gannett-rate-limits.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/gannett
   - type: Website
-    url: https://www.gannett.com
+    url: https://www.usatodayco.com
   - type: USATodayNetwork
     url: https://www.usatoday.com
   - type: LocaliQ
     url: https://localiq.com
+  - type: Blog
+    url: https://localiq.com/blog/
+  - type: Login
+    url: https://localiq.com/login/
   - type: Brands
-    url: https://www.gannett.com/our-brands
+    url: https://www.usatodayco.com/brands/
   - type: News
-    url: https://www.gannett.com/news
+    url: https://www.usatodayco.com/media-room/
   - type: Careers
-    url: https://careers.gannett.com
+    url: https://www.usatodayco.com/careers/
   - type: InvestorRelations
-    url: https://investors.gannett.com
+    url: https://investors.usatodayco.com
   - type: PrivacyPolicy
-    url: https://www.gannett.com/privacy-policy
+    url: https://www.usatodayco.com/privacy-statement/
   - type: TermsOfService
-    url: https://www.gannett.com/terms-of-service
+    url: https://www.usatodayco.com/terms-and-conditions/
   - type: Contact
-    url: https://www.gannett.com/contact-us
+    url: https://www.usatodayco.com/contact/
 maintainers:
   - FN: API Evangelist
     url: https://apievangelist.com
+    email: info@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Gannett runs no developer program at all — developer.gannett.com 301s to the
+    www.usatodayco.com corporate homepage and developer.usatoday.com 301s to the
+    www.usatoday.com consumer news site, api.usatoday.com returns 404, and /openapi.json,
+    /swagger.json, /api-docs and /.well-known/agent-card.json miss on every Gannett, USA
+    TODAY and LocaliQ host; the only machine-readable documents it serves are a security.txt,
+    a Global Privacy Control signal and a WordPress-generated llms.txt on the LocaliQ blog.
+  evidence:
+    - url: https://developer.gannett.com/
+      status: 200
+    - url: https://developer.usatoday.com/
+      status: 200
+    - url: https://api.usatoday.com/
+      status: 404
+    - url: https://www.usatodayco.com/openapi.json
+      status: 403
+    - url: https://localiq.com/openapi.json
+      status: 404
+    - url: https://www.usatoday.com/.well-known/security.txt
+      status: 200
+  checked: '2026-08-13'
