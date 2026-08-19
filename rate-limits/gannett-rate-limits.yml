@@ -1,0 +1,21 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.usatodayco.com/
+limit_count: 0
+note: >-
+  No rate limits are documented because there is no public Gannett API to limit. There is no
+  developer portal (developer.gannett.com and developer.usatoday.com both redirect to
+  consumer sites), no API reference, and no host returning a machine-readable contract, so
+  there are no published quotas, windows, burst allowances or exhaustion headers to record.
+  This is an honest zero, not an unchecked box.
+limits: []
+headers: []
+evidence:
+  - url: https://developer.gannett.com/
+    status: 200
+    note: 301 chain resolves to https://www.usatodayco.com/ — the corporate homepage, not a developer portal
+  - url: https://developer.usatoday.com/
+    status: 200
+    note: 301 chain resolves to https://www.usatoday.com/ — the consumer news site, not a developer portal
+  - url: https://api.usatoday.com/
+    status: 404

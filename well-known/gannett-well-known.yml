@@ -1,0 +1,90 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of /.well-known/* on every Gannett / USA TODAY Co. host in apis.yml
+note: >-
+  Gannett publishes no developer API host, so there is no API base URL to probe. These
+  probes were run against the corporate host (www.usatodayco.com, which www.gannett.com
+  now 301s to), the flagship consumer property (www.usatoday.com) and the LocaliQ
+  marketing-services host (localiq.com). Two real documents were served, both from
+  www.usatoday.com: an RFC 9116 security.txt and a Global Privacy Control (gpc.json)
+  signal. Every OAuth/OIDC, api-catalog, ai-plugin and A2A agent-card path 404d.
+  www.usatoday.com answers unknown /.well-known/* paths with a 303 to the same path with
+  a trailing slash, which then returns an HTML 404 page — recorded below as the miss it is,
+  not as a hit.
+hosts:
+  - host: https://www.usatoday.com
+    role: flagship consumer property (USA TODAY)
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/plain; charset=utf-8
+        file: gannett-security.txt
+        spec: RFC 9116
+      - path: /.well-known/gpc.json
+        status: 200
+        content_type: application/json; charset=utf-8
+        file: gannett-gpc.json
+        spec: Global Privacy Control
+      - path: /.well-known/apple-app-site-association
+        status: 200
+        content_type: application/json
+        note: iOS universal-links manifest for com.usatoday.iPhone20; not an API discovery document, not saved
+      - path: /.well-known/openid-configuration
+        status: 301
+        note: redirect, no document
+      - path: /.well-known/oauth-authorization-server
+        status: 301
+        note: redirect, no document
+      - path: /.well-known/api-catalog
+        status: 301
+        note: redirect, no document
+      - path: /.well-known/ai-plugin.json
+        status: 303
+        note: 303 to trailing-slash variant which returns an HTML 404 page
+      - path: /.well-known/agent-card.json
+        status: 303
+        note: 303 to trailing-slash variant which returns an HTML 404 page
+      - path: /.well-known/agent.json
+        status: 303
+        note: 303 to trailing-slash variant which returns an HTML 404 page
+  - host: https://localiq.com
+    role: LocaliQ digital marketing services (Gannett B2B brand)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 301
+      - path: /.well-known/oauth-authorization-server
+        status: 301
+      - path: /.well-known/api-catalog
+        status: 301
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.usatodayco.com
+    role: corporate site (www.gannett.com 301s here)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+summary:
+  hosts_probed: 3
+  documents_found: 2
+  security_txt: true
+  api_catalog: false
+  oauth_metadata: false
+  agent_card: false

@@ -1,0 +1,22 @@
+generated: '2026-08-13'
+method: searched
+source: https://localiq.com/
+plan_count: 0
+note: >-
+  Gannett publishes no API plans or API pricing, because it publishes no API. Its two
+  commercial surfaces are priced off-page: LocaliQ (the B2B digital-marketing arm) routes
+  every buyer to a "Get a Proposal" / demo form rather than a rate card — https://localiq.com/pricing/,
+  /plans/ and /localiq-pricing/ all return 404 and the homepage CTA is https://localiq.com/demo/ —
+  and USA TODAY consumer subscriptions are sold per-market on the individual newspaper sites,
+  not as a company-wide plan page. There is nothing here to record as a tier, quota or overage.
+plans: []
+evidence:
+  - url: https://localiq.com/pricing/
+    status: 404
+  - url: https://localiq.com/plans/
+    status: 404
+  - url: https://localiq.com/localiq-pricing/
+    status: 404
+  - url: https://localiq.com/demo/
+    status: 200
+    note: the sales-contact form LocaliQ routes pricing enquiries to
