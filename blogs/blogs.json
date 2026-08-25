@@ -1,0 +1,14 @@
+{
+  "repo": "gannett",
+  "feeds": [
+    {
+      "source": "https://localiq.com",
+      "feed_url": "https://localiq.com/feed/",
+      "title": "",
+      "saved": 2,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 2,
+  "fetched": "2026-08-22T20:20:02Z"
+}
